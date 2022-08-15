@@ -1,0 +1,109 @@
+<div class="container" id="search-form-div">
+  <div class="row">
+    <div class="col-md-12" id="search-form-col-1">
+      <div class="row">
+        <div class="col-md-8 m-auto" id="search-form-col-2">
+          <form id="search-form-body" [formGroup]="address" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-12 m-auto" id="search-form-title">
+                  <p>Weather Search🌤️</p>
+                </div>
+                <div class="col-md-4" id="search-form-street-key">
+                  <p>Street<span>*</span></p>
+                </div>
+                <div class="col-md-8" id="search-form-street-value">
+                  <input [class.is-invalid]="address.get('street')?.invalid && address.get('street')?.touched" class="col-md-12" type="text" formControlName="street">
+                  <small [class.d-none]="address.get('street')?.valid || address.get('street')?.untouched" class="text-danger">Please enter a valid street</small>
+                </div>
+                <div class="col-md-4" id="search-form-city-key">
+                  <p>City<span>*</span></p>
+                </div>
+                <div class="col-md-8" id="search-form-city-value">
+                  <input [class.is-invalid]="address.get('city')?.invalid && address.get('city')?.touched" class="col-md-12" type="text" formControlName="city" matInput [matAutocomplete]="auto">
+                  <mat-autocomplete class="col-md-12" #auto="matAutocomplete">
+                    <mat-option class="" *ngFor="let option of autoCompleteOption" [value]="option[0]" (click)="clickAutocomplete(option)">
+                      {{option[0]}}
+                    </mat-option>
+                  </mat-autocomplete>
+                  <small [class.d-none]="address.get('city')?.valid || address.get('city')?.untouched" class="text-danger">Please enter a valid street</small>
+                </div>
+                <div class="col-md-4" id="search-form-state-key">
+                  <p>State</p>
+                </div>
+                <div class="col-md-8" id="search-form-state-value">
+                  <select class="col-md-6" type="text" formControlName="state" [(ngModel)]="stateModel">
+                    <option value="" disabled selected>Select your state</option>
+                    <option *ngFor="let state of stateList; let i = index" [value]="state[0]">{{state[1]}}</option>
+                  </select>
+                </div>
+                <div class="col-md-12" id="search-form-line">
+                  <hr id="search-form-line-body">
+                </div>
+                <div class="col-md-4" id="search-form-auto-detect-key">
+                  <p>Auto-datect location<span>*</span></p>
+                </div>
+                <div class="col-md-8" id="search-form-auto-detect-value">
+                  <input type="checkbox" [formControl]="autoDetect"> Current Location
+                </div>
+
+                <div class="col-md-12" id="my-btn-group">
+                  <button type="submit" class="btn btn-primary m-auto" id="my-search-btn" [disabled]="address.invalid">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                    </svg>Search
+                  </button>
+                  <span>hello</span>
+                  <button type='reset' class="btn btn-outline-dark m-auto" id="my-clear-btn" (click)="clearContent()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>
+                    </svg>Clear
+                  </button>
+                </div>
+<!--                <div class="col-md-3">-->
+<!--                  <button type="submit" class="btn btn-primary m-auto" [disabled]="address.invalid">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">-->
+<!--                      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
+<!--                    </svg>Search-->
+<!--                  </button>-->
+<!--                </div>-->
+<!--                <div class="col-md-3">-->
+<!--                  <button type='reset' class="btn btn-outline-dark m-auto" (click)="clearContent()">-->
+<!--                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-nested" viewBox="0 0 16 16">-->
+<!--                      <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"/>-->
+<!--                    </svg>Clear-->
+<!--                  </button>-->
+<!--                </div>-->
+
+              </div>
+
+<!--            </mat-form-field>-->
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container" id="result-tabs">
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="nav nav-pills justify-content-center ">
+        <li class="nav-item">
+          <a class="nav-link {{resultActivate}}" routerLink="/result/weather-info/daily-weather-list" routerLinkActive="active">Results</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{favoriteActivate}}" routerLink="/favorite" routerLinkActive="active">Favorites</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+  <!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>
+
+

@@ -1,0 +1,48 @@
+<!--<div class="container" id="daily-wather-list-container">-->
+<!--  -->
+<!--</div>-->
+
+<div class="row" id="daily-weather-list-div">
+  <div class="col-md" id="search-result-body-div">
+    <div class="row">
+
+      <div class="col-md-12" id="search-result-body-tables-div">
+        <div class="container" id="search-result-body-tables-container">
+          <table class="table m-auto" id="search-result-body-tables-tables-body">
+            <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Temp. High(℉)</th>
+              <th scope="col">Temp. Low(℉)</th>
+              <th scope="col">Wind Speed(mph)</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr *ngFor="let weather of this.weatherListData; let i = index">
+              <th scope="row">{{i + 1}}</th>
+              <td>
+                <a [routerLink]="['../../daily-weather-details/', i]"routerLinkActive="active"><u>{{getDate(weather.startTime.toString())}}</u></a></td>
+              <td>
+                <!--                      {{getWeatherImg(weather.values.weatherCode.toString())}}-->
+                <img src="{{getWeatherImg(weather.values.weatherCode.toString())}}" height="32" width="32">{{getWeatherStatus(weather.values.weatherCode.toString())}}
+              </td>
+              <td>{{weather.values.temperatureMax}}</td>
+              <td>{{weather.values.temperatureMin}}</td>
+              <td>{{weather.values.windSpeed}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- The routed views render in the <router-outlet>-->
+<router-outlet></router-outlet>

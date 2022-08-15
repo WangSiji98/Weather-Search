@@ -1,0 +1,82 @@
+<div class="container" id="search-result-div">
+  <div class="row">
+    <div class="col-md-12" id="search-result-body-div">
+      <div class="row">
+        <div class="col-md-12" id="search-result-body-title-div">
+          <p>Forecast at {{city}}, {{state}}</p>
+        </div>
+
+        <div class="col-md-12" id="search-result-body-detail-button-div">
+          <div class="row">
+            <div id="search-result-body-detail-button-inner-div" class="ml-auto">
+              <button id="search-result-body-detail-button-favorite" class="btn btn-outline-dark" (click)="addorCancelFavorite()">
+<!--                <img id="search-result-body-detail-button-favorite-img" src="{{imgSrc}}" height="18" width="18" (click)="addorCancelFavorite()">-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16" *ngIf="!added">
+                  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-star-fill" viewBox="0 0 16 16" *ngIf="added" id="favorite-added">
+                  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+              </button>
+
+              <a [routerLink]="['../daily-weather-details/', getLastVisitIndex()]" routerLinkActive="active">
+                <button id="search-result-body-detail-button-details" class="btn btn-default" [disabled]="getButtonStatus()">
+                  Details
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                  </svg>
+                </button>
+              </a>
+
+
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-md-12" id="search-result-body-tabs-div">
+
+          <ul class="nav nav-tabs justify-content-end">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="./daily-weather-list" routerLinkActive="active">Day View</a>
+<!--              <a class="nav-link" (click)="gotodailyWeatherList()">Day View</a>-->
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="./daily-temperature-chart" routerLinkActive="active">Daily Tmep. chart</a>
+<!--              <a class="nav-link" (click)="gotodailyTemperatureChart()">Daily Tmep. chart</a>-->
+
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="./hourly-weather-chart" routerLinkActive="active">Meteogram</a>
+<!--              <a class="nav-link" (click)="gotoHourlyWeatherChart()">Meteogram</a>-->
+            </li>
+          </ul>
+<!--          <nav>-->
+<!--            <ul>-->
+<!--              <li><a routerLink="./daily-temperature-chart" routerLinkActive="active">Daily Tmep. chart</a></li>-->
+<!--              <li><a routerLink="./hourly-weather-chart" routerLinkActive="active">Meteogram</a></li>-->
+<!--            </ul>-->
+<!--          </nav>-->
+
+        </div>
+        <div class="col-md-12 m-auto">
+          <router-outlet></router-outlet>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+
+<!-- The routed views render in the <router-outlet>-->
+
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+
+
+

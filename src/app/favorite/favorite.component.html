@@ -1,0 +1,36 @@
+<div class="container" id="favorites">
+  <div class="row">
+    <div class="col-md" id="search-result-body-tables-div">
+      <div class="container m-auto" id="search-result-body-tables-container">
+        <div class="col-md" id="no-favorite-record-remind" *ngIf="showEmpty">
+          <span>Sorry!</span> No record found
+        </div>
+        <table class="table" id="search-result-body-tables-tables-body" *ngIf="!showEmpty">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">City</th>
+            <th scope="col">State</th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let favoriteItem of favoriteList; let i = index">
+            <th scope="row">{{i + 1}}</th>
+            <td>
+              <a routerLink="../result/weather-info/daily-weather-list" routerLinkActive="active" (click)="showFavorite(i)"><u>{{favoriteItem[0]}}</u></a></td>
+            <td>
+              <a routerLink="../result/weather-info/daily-weather-list" routerLinkActive="active" (click)="showFavorite(i)"><u>{{favoriteItem[1]}}</u></a></td>
+            <td>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16" (click)="deleteIetm(i)">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+              </svg>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

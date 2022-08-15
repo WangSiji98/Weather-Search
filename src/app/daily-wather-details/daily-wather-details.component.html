@@ -1,0 +1,165 @@
+<div class="container" id="daily-wather-details-container">
+  <div class="row">
+    <div class="col-md-12" id="daily-wather-details-div">
+      <div class="row m-auto">
+
+
+        <div class="col-md-12" id="search-result-body-detail-info-button-div">
+          <div class="row">
+            <div id="search-result-body-detail-button-list-div" class="col col-md-2 mr-auto">
+
+              <a class="btn btn-outline-dark" id="search-result-body-detail-button-details" routerLink="../../weather-info/daily-weather-list">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+                </svg>List
+              </a>
+            </div>
+
+            <div class="col col-md-9 m-auto" id="search-result-body-detail-button-date-div">
+              <p>{{getDate(dailyWeatherData.startTime.toString())}}</p>
+            </div>
+
+            <div id="search-result-body-detail-button-twitter-div" class="col col-md-1 ml-auto">
+                <a class="twitter-share-button"
+                   href="https://twitter.com/intent/tweet?text={{twitterText}}&hashtags={{twitterHashtags}}"
+                   data-size="large" target="_blank">
+                  <button id="search-result-body-detail-button-twitter" class="btn btn-outline-dark">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-twitter" viewBox="0 0 16 16" id="twitter-icon">
+                      <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                    </svg>
+                  </button>
+                </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-12" id="search-result-body-details-tables-body-div">
+          <table class="table table-striped" id="search-result-body-details-tables-tables-body">
+            <tbody>
+            <tr>
+              <td><span>Status</span></td>
+              <td>{{getWeatherStatus(dailyWeatherData.values.weatherCode.toString())}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><span>Max Temperature</span></td>
+              <td>{{dailyWeatherData.values.temperatureMax.toString()}}℉</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Min Temperature</span></td>
+              <td>{{dailyWeatherData.values.temperatureMin.toString()}}℉</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Apparent Temperature</span></td>
+              <td>{{dailyWeatherData.values.temperatureApparent.toString()}}℉</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Sun Rise Time</span></td>
+              <td>{{dailyWeatherData.values.sunriseTime.toString().substr(12, 7)}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Sun Set Time</span></td>
+              <td>{{dailyWeatherData.values.sunsetTime.toString().substr(12, 7)}}</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Humidity</span></td>
+              <td>{{dailyWeatherData.values.humidity.toString()}}%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Wind Speed</span></td>
+              <td>{{dailyWeatherData.values.windSpeed.toString()}}mph</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Visibility</span></td>
+              <td>{{dailyWeatherData.values.visibility.toString()}}mi</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr><tr>
+              <td><span>Cloud Cover</span></td>
+              <td>{{dailyWeatherData.values.cloudCover.toString()}}%</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="col-md-12" id="search-result-body-details-maps-div">
+<!--          <agm-map [latitude]="20" [longitude]="lng"></agm-map>-->
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+
+          <!-- this creates a google map on the page with the given lat/lng from -->
+          <!-- the component as the initial center of the map: -->
+<!--          <agm-map [latitude]="lat" [longitude]="lng">-->
+<!--            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+<!--          </agm-map>-->
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
